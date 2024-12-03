@@ -90,7 +90,7 @@
     <section class="py-8 flex flex-col items-center">
         <div class="max-w-6xl w-full px-4">
             <button onclick="toggleIframe2()" 
-                class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
+                class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition just">
                 Tampilkan/Sembunyikan Demo SVM
             </button>
             <div id="iframeContainer2" class="mt-4 hidden">
@@ -113,6 +113,18 @@
         </div>
     </section>
 
+    <section class="py-8 flex flex-col items-center">
+        <div class="max-w-6xl w-full px-4">
+            <button onclick="toggleIframe4()" 
+                class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
+                Tampilkan/Sembunyikan Demo Random Forrest
+            </button>
+            <div id="iframeContainer4" class="mt-4 hidden">
+                <iframe src="https://mlu-explain.github.io/random-forest/" 
+                    frameborder="0" width="100%" height="600" class="rounded-lg shadow-custom"></iframe>
+            </div>
+        </div>
+    </section>
 
 
     <script>
@@ -126,7 +138,12 @@
         }
         
         function toggleIframe3() {
-            const iframeContainer = document.getElementById('iframeContainer2');
+            const iframeContainer = document.getElementById('iframeContainer3');
+            iframeContainer.classList.toggle('hidden');
+        }
+
+        function toggleIframe4() {
+            const iframeContainer = document.getElementById('iframeContainer4');
             iframeContainer.classList.toggle('hidden');
         }
 
