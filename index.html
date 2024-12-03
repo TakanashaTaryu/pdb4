@@ -79,7 +79,7 @@
 
     <section class="py-8 flex flex-col items-center">
         <div class="max-w-6xl w-full px-4">
-            <button onclick="toggleIframe('iframeContainer1', 'loader1')" 
+            <button onclick="toggleIframe('iframeContainer1', 'loader1', 'iframe1')" 
                 class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
                 Tampilkan/Sembunyikan Demo Neural Networks
             </button>
@@ -93,7 +93,7 @@
     
     <section class="py-8 flex flex-col items-center">
         <div class="max-w-6xl w-full px-4">
-            <button onclick="toggleIframe('iframeContainer2', 'loader2')" 
+            <button onclick="toggleIframe('iframeContainer2', 'loader2', 'iframe2')" 
                 class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
                 Tampilkan/Sembunyikan Demo SVM
             </button>
@@ -107,7 +107,7 @@
     
     <section class="py-8 flex flex-col items-center">
         <div class="max-w-6xl w-full px-4">
-            <button onclick="toggleIframe('iframeContainer3', 'loader3')" 
+            <button onclick="toggleIframe('iframeContainer3', 'loader3', 'iframe3')" 
                 class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
                 Tampilkan/Sembunyikan Demo KNN
             </button>
@@ -121,7 +121,7 @@
     
     <section class="py-8 flex flex-col items-center">
         <div class="max-w-6xl w-full px-4">
-            <button onclick="toggleIframe('iframeContainer4', 'loader4')" 
+            <button onclick="toggleIframe('iframeContainer4', 'loader4', 'iframe4')" 
                 class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
                 Tampilkan/Sembunyikan Demo Random Forest
             </button>
@@ -134,29 +134,32 @@
     </section>
     
     <script>
-        function toggleIframe(containerId, loaderId) {
+        function toggleIframe(containerId, loaderId, iframeId) {
             const iframeContainer = document.getElementById(containerId);
             const loader = document.getElementById(loaderId);
-            const iframe = iframeContainer.querySelector('iframe');
+            const iframe = document.getElementById(iframeId);
     
             // Toggle container visibility
             iframeContainer.classList.toggle('hidden');
-    
+            
             if (!iframeContainer.classList.contains('hidden')) {
-                // Show loader only if iframe isn't fully loaded
                 loader.classList.remove('hidden');
     
-                // Ensure iframe load event is handled once
+                // Attach the onload event handler if not already attached
                 if (!iframe.dataset.loaded) {
                     iframe.onload = () => {
-                        loader.classList.add('hidden');
-                        iframe.dataset.loaded = 'true';  // Mark iframe as loaded
+                        loader.classList.add('hidden'); // Hide loader when iframe is loaded
+                        iframe.dataset.loaded = 'true'; // Mark iframe as loaded
                     };
+                    // Fallback: hide loader after a delay if onload doesn't trigger
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                    }, 1000); // Adjust based on expected load duration
                 } else {
                     loader.classList.add('hidden'); // Hide loader if already loaded
                 }
             } else {
-                loader.classList.add('hidden'); // Ensure loader hides when container is closed
+                loader.classList.add('hidden'); // Hide loader if the container is closed
             }
         }
     </script>
