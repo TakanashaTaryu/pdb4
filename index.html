@@ -74,6 +74,27 @@
         </div>
     </section>
 
+    <section class="py-8 flex flex-col items-center">
+        <div class="max-w-6xl w-full px-4">
+            <button onclick="toggleIframe()" 
+                class="bg-pastel-brown text-white px-6 py-3 rounded-lg shadow-custom hover:bg-pastel-link focus:outline-none transition">
+                Tampilkan/Sembunyikan Demo Klasifikasi
+            </button>
+            <div id="iframeContainer" class="mt-4 hidden">
+                <iframe src="http://vision.stanford.edu/teaching/cs231n-demos/linear-classify/" 
+                    frameborder="0" width="100%" height="600" class="rounded-lg shadow-custom"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function toggleIframe() {
+            const iframeContainer = document.getElementById('iframeContainer');
+            iframeContainer.classList.toggle('hidden');
+        }
+    </script>
+    
+
     <!-- Carousel -->
     <section class="py-8">
         <h2 class="text-3xl font-semibold text-center text-pastel-dark mb-6">Hasil Pengerjaan</h2>
@@ -194,6 +215,8 @@
 
         setInterval(nextSlide, 3000);
     </script>
+
+        <!-- JavaScript for Iframe Toggle -->
 
 </body>
 </html>
